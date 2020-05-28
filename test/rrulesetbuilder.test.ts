@@ -1,6 +1,9 @@
 import { expect } from 'chai'
 import { RRule, RRuleSet } from 'rrule'
-import { ReadableRRuleSetBuilder, ShortRRuleSetBuilder } from '../src/rrulesetbuilder'
+import {
+    ReadableRRuleSetBuilder,
+    ShortRRuleSetBuilder
+} from '../src/rrulesetbuilder'
 
 class TestCase {
     title: string
@@ -9,7 +12,13 @@ class TestCase {
     limit: number
     result: Array<Date>
 
-    constructor(title: string, rruleSet: RRuleSet, template: Array<0|1>, limit: number, result: Array<Date>) {
+    constructor(
+        title: string,
+        rruleSet: RRuleSet,
+        template: Array<0|1>,
+        limit: number,
+        result: Array<Date>
+    ) {
         this.title = title
         this.rruleSet = rruleSet
         this.template = template
@@ -88,6 +97,11 @@ testCases.push(function() {
 }())    
 
 describe('ReadableRRuleSetBuilder', function() {
+    it('Cache', function() {
+        const builder = new ReadableRRuleSetBuilder(new RRuleSet(), [], 0)
+        expect(builder.build()).to.equal(builder.build())
+    })    
+
     for (let testCase of testCases) {
         it(testCase.title, function() {
             const builder = new ReadableRRuleSetBuilder(
@@ -103,6 +117,11 @@ describe('ReadableRRuleSetBuilder', function() {
 })
 
 describe('ShortRRuleSetBuilder', function() {
+    it('Cache', function() {
+        const builder = new ShortRRuleSetBuilder(new RRuleSet(), [], 0)
+        expect(builder.build()).to.equal(builder.build())
+    })    
+
     for (let testCase of testCases) {
         it(testCase.title, function() {
             const builder = new ShortRRuleSetBuilder(

@@ -20,7 +20,13 @@ export abstract class RRuleSetBuilder {
 }
 
 export class ReadableRRuleSetBuilder extends RRuleSetBuilder {
+    private builedRRuleSet: RRuleSet | undefined
+
     public build() {
+        if (this.builedRRuleSet) {
+            return this.builedRRuleSet
+        }
+
         const rruleSet = new RRuleSet()
         const dates = this.rruleSet.all(this.iterator())
 
@@ -40,6 +46,8 @@ export class ReadableRRuleSetBuilder extends RRuleSetBuilder {
             rruleSet.exdate(dates[i])
         }
 
+        this.builedRRuleSet = rruleSet
+
         return rruleSet
     }
 }
@@ -49,7 +57,13 @@ interface Dictionary<T> {
 }
 
 export class ShortRRuleSetBuilder extends RRuleSetBuilder {
+    private builedRRuleSet: RRuleSet | undefined
+
     public build() {
+        if (this.builedRRuleSet) {
+            return this.builedRRuleSet
+        }
+
         const rruleSet = new RRuleSet()
         const dates = this.rruleSet.all(this.iterator())
         const dayIndexesByYearAndTime: Dictionary<Array<number>> = {}
@@ -96,6 +110,8 @@ export class ShortRRuleSetBuilder extends RRuleSetBuilder {
                 bysetpos: dayIndexesByYearAndTime[yearAndTime],
             }))
         }
+
+        this.builedRRuleSet = rruleSet
 
         return rruleSet
     }
