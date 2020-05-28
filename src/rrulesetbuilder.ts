@@ -14,8 +14,8 @@ export abstract class RRuleSetBuilder {
 
     abstract build(): RRuleSet
 
-    protected iterator(): (date: Date, i: number) => boolean {
-        return (date, i) => {return i < this.limit}
+    protected iterator(limit: number): (date: Date, i: number) => boolean {
+        return (date, i) => {return i < limit}
     }
 }
 
@@ -28,15 +28,26 @@ export class ReadableRRuleSetBuilder extends RRuleSetBuilder {
         }
 
         const rruleSet = new RRuleSet()
-        const dates = this.rruleSet.all(this.iterator())
+        const dates: Array<Date> = []
 
         for (let rrule of this.rruleSet.rrules()) {
-            if (rrule.options.until && rrule.options.until.getTime() > dates[dates.length - 1].getTime()) {
-                rrule.options.until = dates[dates.length - 1]
+            if (dates.length >= this.limit) {
+                break
             }
 
-            rruleSet.rrule(rrule)
+            let iterator = this.iterator(this.limit - dates.length)
+
+            for (let date of rrule.all(iterator)) {
+                dates.push(date)
+            }
+
+            rrule.origOptions.until = dates[dates.length - 1]
+            rruleSet.rrule(new RRule(rrule.origOptions))
         }
+
+        dates.sort(function(a, b) {
+            return a.getTime() - b.getTime()
+        })
 
         for (let i in dates) {
             if (this.template[Number(i) % this.template.length]) {
@@ -65,7 +76,7 @@ export class ShortRRuleSetBuilder extends RRuleSetBuilder {
         }
 
         const rruleSet = new RRuleSet()
-        const dates = this.rruleSet.all(this.iterator())
+        const dates = this.rruleSet.all(this.iterator(this.limit))
         const dayIndexesByYearAndTime: Dictionary<Array<number>> = {}
 
         for (let i in dates) {
@@ -96,8 +107,11 @@ export class ShortRRuleSetBuilder extends RRuleSetBuilder {
                         1,
                         Number(hours),
                         Number(minutes),
-                        Number(seconds))),
-                until: new Date(Date.UTC(Number(year), 11, 31, 23, 59, 59, 999)),
+                        Number(seconds))
+                ),
+                until: new Date(
+                    Date.UTC(Number(year), 11, 31, 23, 59, 59, 999)
+                ),
                 byweekday: [
                     RRule.MO,
                     RRule.TU,

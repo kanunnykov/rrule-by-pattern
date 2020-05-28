@@ -94,7 +94,117 @@ testCases.push(function() {
             new Date('2025-12-30T06:00:00.000Z'),
         ]
     )    
-}())    
+}())
+
+testCases.push(function() {
+    const rruleSet = new RRuleSet()
+
+    rruleSet.rrule(new RRule({
+        freq: RRule.HOURLY,
+        dtstart: new Date(Date.UTC(2025, 11, 27, 6)),
+        interval: 12
+    }))
+
+    return new TestCase(
+        'Unlimited period',
+        rruleSet,
+        [1, 0, 0],
+        10,
+        [
+            new Date('2025-12-27T06:00:00.000Z'),
+            new Date('2025-12-28T18:00:00.000Z'),
+            new Date('2025-12-30T06:00:00.000Z'),
+            new Date('2025-12-31T18:00:00.000Z'),
+        ]
+    )    
+}())
+
+testCases.push(function() {
+    const rruleSet = new RRuleSet()
+
+    rruleSet.rrule(new RRule({
+        freq: RRule.DAILY,
+        dtstart: new Date(Date.UTC(2026, 0, 1, 10)),
+        until: new Date(Date.UTC(2026, 0, 6))
+    }))
+
+    rruleSet.rrule(new RRule({
+        freq: RRule.HOURLY,
+        dtstart: new Date(Date.UTC(2025, 11, 27, 6)),
+        interval: 12
+    }))
+
+    return new TestCase(
+        'Combined intersecting periods | limited before unlimited',
+        rruleSet,
+        [1, 0, 0],
+        10,
+        [
+            new Date('2025-12-27T06:00:00.000Z'),
+            new Date('2025-12-28T18:00:00.000Z'),
+            new Date('2026-01-02T10:00:00.000Z'),
+            new Date('2026-01-05T10:00:00.000Z'),
+        ]
+    )    
+}())
+
+testCases.push(function() {
+    const rruleSet = new RRuleSet()
+
+    rruleSet.rrule(new RRule({
+        freq: RRule.HOURLY,
+        dtstart: new Date(Date.UTC(2025, 11, 30, 6)),
+        interval: 12
+    }))
+
+    rruleSet.rrule(new RRule({
+        freq: RRule.DAILY,
+        dtstart: new Date(Date.UTC(2026, 0, 1, 10)),
+        until: new Date(Date.UTC(2026, 0, 6))
+    }))
+
+    return new TestCase(
+        'Combined intersecting periods | limited after unlimited',
+        rruleSet,
+        [1, 0, 0],
+        10,
+        [
+            new Date('2025-12-30T06:00:00.000Z'),
+            new Date('2025-12-31T18:00:00.000Z'),
+            new Date('2026-01-02T06:00:00.000Z'),
+            new Date('2026-01-03T18:00:00.000Z'),
+        ]
+    )    
+}())
+
+testCases.push(function() {
+    const rruleSet = new RRuleSet()
+
+    rruleSet.rrule(new RRule({
+        freq: RRule.DAILY,
+        dtstart: new Date(Date.UTC(2025, 10, 1, 10)),
+        until: new Date(Date.UTC(2025, 10, 11))
+    }))
+
+    rruleSet.rrule(new RRule({
+        freq: RRule.HOURLY,
+        dtstart: new Date(Date.UTC(2025, 11, 27, 6)),
+        interval: 12
+    }))
+
+    return new TestCase(
+        'Combined not intersecting periods',
+        rruleSet,
+        [1, 0, 0],
+        10,
+        [
+            new Date('2025-11-01T10:00:00.000Z'),
+            new Date('2025-11-04T10:00:00.000Z'),
+            new Date('2025-11-07T10:00:00.000Z'),
+            new Date('2025-11-10T10:00:00.000Z'),
+        ]
+    )    
+}())
 
 describe('ReadableRRuleSetBuilder', function() {
     it('Cache', function() {
