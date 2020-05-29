@@ -4,18 +4,35 @@ import { RRule, RRuleSet } from 'rrule'
 export abstract class RRuleSetBuilder {
     protected rruleSet: RRuleSet
     protected template: Array<0|1>
-    protected limit: number
+    protected count: number
+    private _limit: number | undefined
 
-    constructor(rruleSet: RRuleSet, template: Array<0|1>, limit: number) {
+    constructor(rruleSet: RRuleSet, template: Array<0|1>, count: number) {
         this.rruleSet = rruleSet
         this.template = template
-        this.limit = limit
+        this.count = count
     }
 
     abstract build(): RRuleSet
 
-    protected iterator(limit: number): (date: Date, i: number) => boolean {
-        return (date, i) => {return i < limit}
+    protected get limit() {
+        if (this._limit) {
+            return this._limit
+        }
+
+        const template: Array<number> = this.template
+        const countOfOneInTemplate = template.reduce(
+            (prev, curr) => {return prev + curr}
+        )
+        const limit = Math.floor(this.count * this.template.length / countOfOneInTemplate)
+
+        this._limit = limit
+
+        return limit
+    }
+
+    protected iterator(): (date: Date, i: number) => boolean {
+        return (date, i) => {return i < this.limit}
     }
 }
 
@@ -27,27 +44,8 @@ export class ReadableRRuleSetBuilder extends RRuleSetBuilder {
             return this.builedRRuleSet
         }
 
-        const rruleSet = new RRuleSet()
-        const dates: Array<Date> = []
-
-        for (let rrule of this.rruleSet.rrules()) {
-            if (dates.length >= this.limit) {
-                break
-            }
-
-            let iterator = this.iterator(this.limit - dates.length)
-
-            for (let date of rrule.all(iterator)) {
-                dates.push(date)
-            }
-
-            rrule.origOptions.until = dates[dates.length - 1]
-            rruleSet.rrule(new RRule(rrule.origOptions))
-        }
-
-        dates.sort(function(a, b) {
-            return a.getTime() - b.getTime()
-        })
+        const rruleSet = this.rruleSet.clone()
+        const dates = rruleSet.all(this.iterator())
 
         for (let i in dates) {
             if (this.template[Number(i) % this.template.length]) {
@@ -76,7 +74,7 @@ export class ShortRRuleSetBuilder extends RRuleSetBuilder {
         }
 
         const rruleSet = new RRuleSet()
-        const dates = this.rruleSet.all(this.iterator(this.limit))
+        const dates = this.rruleSet.all(this.iterator())
         const dayIndexesByYearAndTime: Dictionary<Array<number>> = {}
 
         for (let i in dates) {
