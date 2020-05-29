@@ -182,7 +182,7 @@ describe('ReadableRRuleSetBuilder', function() {
         expect(builder.build()).to.equal(builder.build())
     })    
 
-    for (let testCase of testCases) {
+    for (const testCase of testCases) {
         it(testCase.title, function() {
             const builder = new ReadableRRuleSetBuilder(
                 testCase.rruleSet,
@@ -204,7 +204,7 @@ describe('ShortRRuleSetBuilder', function() {
         expect(builder.build()).to.equal(builder.build())
     })    
 
-    for (let testCase of testCases) {
+    for (const testCase of testCases) {
         it(testCase.title, function() {
             const builder = new ShortRRuleSetBuilder(
                 testCase.rruleSet,

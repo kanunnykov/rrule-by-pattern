@@ -9,7 +9,7 @@ interface Dictionary<T> {
 export class ShortRRuleSetBuilder extends RRuleSetBuilder {
     private builedRRuleSet: RRuleSet | undefined
 
-    public build() {
+    public build(): RRuleSet {
         if (this.builedRRuleSet) {
             return this.builedRRuleSet
         }
@@ -18,12 +18,12 @@ export class ShortRRuleSetBuilder extends RRuleSetBuilder {
         const dates = this.rruleSet.all(this.iterator())
         const dayIndexesByYearAndTime: Dictionary<Array<number>> = {}
 
-        for (let i in dates) {
+        for (const i in dates) {
             if (!this.template[Number(i) % this.template.length]) {
                 continue
             }
 
-            let yearAndTime = dates[i].getUTCFullYear()
+            const yearAndTime = dates[i].getUTCFullYear()
                 + '&' + dates[i].getUTCHours()
                 + '&' + dates[i].getUTCMinutes()
                 + '&' + dates[i].getUTCSeconds()
@@ -35,8 +35,8 @@ export class ShortRRuleSetBuilder extends RRuleSetBuilder {
             dayIndexesByYearAndTime[yearAndTime].push(getDayOfYear(dates[i]))
         }
 
-        for (let yearAndTime in dayIndexesByYearAndTime) {
-            let [year, hours, minutes, seconds] = yearAndTime.split('&')
+        for (const yearAndTime in dayIndexesByYearAndTime) {
+            const [year, hours, minutes, seconds] = yearAndTime.split('&')
             rruleSet.rrule(new RRule({
                 freq: RRule.YEARLY,
                 dtstart: new Date(

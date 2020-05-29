@@ -14,7 +14,7 @@ export abstract class RRuleSetBuilder {
 
     abstract build(): RRuleSet
 
-    protected get limit() {
+    protected get limit(): number {
         if (this._limit) {
             return this._limit
         }
@@ -23,7 +23,9 @@ export abstract class RRuleSetBuilder {
         const countOfOneInTemplate = template.reduce(
             (prev, curr) => {return prev + curr}
         )
-        const limit = Math.floor(this.count * this.template.length / countOfOneInTemplate)
+        const limit = Math.floor(
+            this.count * this.template.length / countOfOneInTemplate
+        )
 
         this._limit = limit
 
@@ -31,6 +33,6 @@ export abstract class RRuleSetBuilder {
     }
 
     protected iterator(): (date: Date, i: number) => boolean {
-        return (date, i) => {return i < this.limit}
+        return (date: Date, i:number): boolean => {return i < this.limit}
     }
 }
