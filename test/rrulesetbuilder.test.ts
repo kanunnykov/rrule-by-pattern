@@ -1,9 +1,7 @@
 import { expect } from 'chai'
 import { RRule, RRuleSet } from 'rrule'
-import {
-    ReadableRRuleSetBuilder,
-    ShortRRuleSetBuilder
-} from '../src/rrulesetbuilder'
+import { ReadableRRuleSetBuilder } from '../src/readablerrulesetbuilder'
+import { ShortRRuleSetBuilder } from '../src/shortrrulesetbuilder'
 
 interface TestCase {
     title: string
