@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "main": "./dist/cjs/src/rrulesetbuilder.js",
   "scripts": {
-    "start": "yarn lint && tsc",
+    "start": "yarn lint && tsc && tsc --project tsconfig.test.json",
     "lint": "npx eslint ./src/*.ts ./test/*.ts",
     "test": "mocha ./dist/cjs/test/*.test.js"
   },
