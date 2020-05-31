@@ -34,7 +34,7 @@ function build(template: Array<0|1>) {
     rruleSet.rrule(new RRule({
         freq: RRule.DAILY,
         dtstart: new Date(Date.UTC(2026, 0, 1, 6)),
-        until: new Date(Date.UTC(2026, 0, 30, 23, 59, 59, 999)),
+        until: new Date(Date.UTC(2026, 0, 30, 6)),
     }))
     
     const builder = new ReadableRRuleSetBuilder(
