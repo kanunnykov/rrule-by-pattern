@@ -1,8 +1,8 @@
 {
-  "name": "rrule-from-custom-template",
-  "description": "Create rrule from template like '111100' (i.e. 4 on, 2 off)",
+  "name": "rrule-from-template",
+  "description": "Build rrule from template like '111100' (i.e. 4 on, 2 off)",
   "version": "1.0.0",
-  "main": "./dist/cjs/src/rrulesetbuilder.js",
+  "main": "./dist/es5/rrule-from-template.js",
   "module": "./dist/esm/src/index.js",
   "typings": "./dist/esm/src/index.d.ts",
   "scripts": {
