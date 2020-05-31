@@ -45,7 +45,8 @@ mainConfig = {
         ],
     },
     externals: {
-        rrule: 'rrule'
+        'rrule': 'rrule',
+        'date-fns': 'date-fns',
     },
 };
 
