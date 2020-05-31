@@ -13,6 +13,6 @@
     "declarationMap": true,
     "moduleResolution": "node",
   },
-  "include": ["./src/**/*"],
+  "include": ["./src/**/*", "./demo/**/*"],
   "exclude": ["./node_modules"],
 }

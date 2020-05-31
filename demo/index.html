@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rrule from custom template</title>
+    <script src="../dist/es5/demo/demo.js"></script>
+</head>
+<body>
+    <div>
+        <p>Let's imagine we have the following code:</p>
+        <form id="templateform" action="#" style="background-color: aliceblue; padding: 10px;">
+<pre><code>import { RRule, RRuleSet } from 'rrule'
+import { ReadableRRuleSetBuilder } from 'rrule-from-custom-template'
+
+const rruleSet = new RRuleSet()
+
+rruleSet.rrule(new RRule({
+    freq: RRule.DAILY,
+    dtstart: new Date(Date.UTC(2026, 0, 1, 6)),
+    until: new Date(Date.UTC(2026, 0, 30, 23, 59, 59, 999)),
+}))</code></pre>
+
+            <label for="template"><code>* = </code></label>[<input type="text" name="template" id="template" value="1,1,1,1,0,0">]
+
+<pre><code>const builder = new ReadableRRuleSetBuilder(
+    rruleSet,
+    template,
+    rruleSet.count()
+)
+
+const newRRuleSet = builder.build()
+
+console.log(newRRuleSet.all())</code></pre>
+
+            <input type="submit" value="Run">
+        </form>
+    </div>
+
+
+    <div>
+        <p>Console:</p>
+        <span id="resultmessage"></span>
+        <ul id="resultlist">
+            <li>Thu Jan 01 2026 07:00:00 GMT+0100 (Central European Standard Time)</li>
+            <li>Fri Jan 02 2026 07:00:00 GMT+0100 (Central European Standard Time)</li>
+            <li>Sat Jan 03 2026 07:00:00 GMT+0100 (Central European Standard Time)</li>
+            <li>Sun Jan 04 2026 07:00:00 GMT+0100 (Central European Standard Time)</li>
+            <li>Wed Jan 07 2026 07:00:00 GMT+0100 (Central European Standard Time)</li>
+            <li>Thu Jan 08 2026 07:00:00 GMT+0100 (Central European Standard Time)</li>
+            <li>Fri Jan 09 2026 07:00:00 GMT+0100 (Central European Standard Time)</li>
+            <li>Sat Jan 10 2026 07:00:00 GMT+0100 (Central European Standard Time)</li>
+            <li>Tue Jan 13 2026 07:00:00 GMT+0100 (Central European Standard Time)</li>
+            <li>Wed Jan 14 2026 07:00:00 GMT+0100 (Central European Standard Time)</li>
+            <li>Thu Jan 15 2026 07:00:00 GMT+0100 (Central European Standard Time)</li>
+            <li>Fri Jan 16 2026 07:00:00 GMT+0100 (Central European Standard Time)</li>
+            <li>Mon Jan 19 2026 07:00:00 GMT+0100 (Central European Standard Time)</li>
+            <li>Tue Jan 20 2026 07:00:00 GMT+0100 (Central European Standard Time)</li>
+            <li>Wed Jan 21 2026 07:00:00 GMT+0100 (Central European Standard Time)</li>
+            <li>Thu Jan 22 2026 07:00:00 GMT+0100 (Central European Standard Time)</li>
+            <li>Sun Jan 25 2026 07:00:00 GMT+0100 (Central European Standard Time)</li>
+            <li>Mon Jan 26 2026 07:00:00 GMT+0100 (Central European Standard Time)</li>
+            <li>Tue Jan 27 2026 07:00:00 GMT+0100 (Central European Standard Time)</li>
+            <li>Wed Jan 28 2026 07:00:00 GMT+0100 (Central European Standard Time)</li>
+        </ul>
+    </div>
+</body>
+</html>

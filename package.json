@@ -7,7 +7,7 @@
   "typings": "./dist/esm/src/index.d.ts",
   "scripts": {
     "build": "yarn lint && tsc && webpack",
-    "lint": "npx eslint ./src/*.ts ./test/*.ts",
+    "lint": "npx eslint ./src/**/*.ts ./demo/**/*.ts ./test/**/*.ts",
     "test": "tsc --project tsconfig.test.json && mocha ./dist/cjs/test/*.test.js"
   },
   "author": "Artem Kanunnykov",
