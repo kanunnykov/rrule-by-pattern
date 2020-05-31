@@ -21,7 +21,7 @@ rruleSet.rrule(new RRule({
     until: new Date(Date.UTC(2026, 0, 30, 23, 59, 59, 999)),
 }))</code></pre>
 
-            <label for="template"><code>* = </code></label>[<input type="text" name="template" id="template" value="1,1,1,1,0,0">]
+            <label for="template"><code>const template: Array&lt;0|1&gt; = </code></label>[<input type="text" name="template" id="template" value="1,1,1,1,0,0">]
 
 <pre><code>const builder = new ReadableRRuleSetBuilder(
     rruleSet,

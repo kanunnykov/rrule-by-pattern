@@ -1,6 +1,6 @@
 {
   "name": "rrule-from-template",
-  "description": "Build rrule from template like '111100' (i.e. 4 on, 2 off)",
+  "description": "Build rrules from templates like '111100' (i.e. 4 on, 2 off). rrule.js extension.",
   "version": "1.0.0",
   "main": "./dist/es5/rrule-from-template.js",
   "module": "./dist/esm/src/index.js",
@@ -11,7 +11,7 @@
     "test": "tsc --project tsconfig.test.json && mocha ./dist/cjs/test/*.test.js"
   },
   "author": "Artem Kanunnykov",
-  "license": "ISC",
+  "license": "bsd-3-clause",
   "keywords": [
     "dates",
     "recurrences",
