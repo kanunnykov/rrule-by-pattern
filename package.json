@@ -11,7 +11,7 @@
     "test": "tsc --project tsconfig.test.json && mocha ./dist/cjs/test/*.test.js"
   },
   "author": "Artem Kanunnykov",
-  "license": "bsd-3-clause",
+  "license": "BSD-3-Clause",
   "keywords": [
     "dates",
     "recurrences",
@@ -21,6 +21,10 @@
     "shifts",
     "schedule"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kanunnykov/rrule-from-tempalte.git"
+  },
   "devDependencies": {
     "@types/chai": "^4.2.11",
     "@types/mocha": "^7.0.2",
