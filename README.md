@@ -5,7 +5,6 @@ rrule-from-template.js
 
 [![NPM version][npm-image]][npm-url]
 [![Build Status][ci-image]][ci-url]
-[![js-standard-style][js-standard-image]][js-standard-url]
 [![Downloads][downloads-image]][downloads-url]
 
 It is a [rrule.js](https://github.com/jakubroztocil/rrule) extension.
@@ -126,3 +125,12 @@ RRULE:FREQ=YEARLY;UNTIL=20251231T235959Z;BYDAY=MO,TU,WE,TH,FR,SA,SU;BYSETPOS=359
 DTSTART:20260101T060000Z
 RRULE:FREQ=YEARLY;UNTIL=20261231T235959Z;BYDAY=MO,TU,WE,TH,FR,SA,SU;BYSETPOS=1,2,3,4,7,8,9,10,13,14,15,16,19,20,21,22,25,26,27,28
 ```
+
+[npm-url]: https://npmjs.org/package/rrule-from-template
+[npm-image]: http://img.shields.io/npm/v/rrule-from-template.svg
+
+[ci-url]: https://github.com/kanunnykov/rrule-from-template/actions
+[ci-image]: https://github.com/kanunnykov/rrule-from-template/workflows/Node.js%20CI/badge.svg
+
+[downloads-url]: https://npmjs.org/package/rrule-from-template
+[downloads-image]: http://img.shields.io/npm/dm/rrule-from-template.svg?style=flat-square
