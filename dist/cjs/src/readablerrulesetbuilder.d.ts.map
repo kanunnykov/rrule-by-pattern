@@ -1,0 +1,1 @@
+{"version":3,"file":"readablerrulesetbuilder.d.ts","sourceRoot":"","sources":["../../../src/readablerrulesetbuilder.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,QAAQ,EAAE,MAAM,OAAO,CAAA;AAChC,OAAO,EAAE,eAAe,EAAE,MAAM,mBAAmB,CAAA;AAEnD,qBAAa,uBAAwB,SAAQ,eAAe;IACxD,OAAO,CAAC,cAAc,CAAsB;IAErC,KAAK,IAAI,QAAQ;CAoB3B"}
