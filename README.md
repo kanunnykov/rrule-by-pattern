@@ -3,9 +3,22 @@ rrule-from-template.js
 
 **Build recurrence rules from templates like '111100' (i.e. 4 on, 2 off)**
 
+[![NPM version][npm-image]][npm-url]
+[![Build Status][ci-image]][ci-url]
+[![js-standard-style][js-standard-image]][js-standard-url]
+[![Downloads][downloads-image]][downloads-url]
+
 It is a [rrule.js](https://github.com/jakubroztocil/rrule) extension.
 
+* * *
+
 ### Quick Start
+
+```bash
+$ yarn add rrule-from-template
+# or
+$ npm install rrule-from-template
+```
 
 #### Usage
 
