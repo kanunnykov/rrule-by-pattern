@@ -13,6 +13,10 @@ It is a [rrule.js](https://github.com/jakubroztocil/rrule) extension.
 
 ### Quick Start
 
+-   [Demo app](https://kanunnykov.github.io/rrule-from-template/)
+
+#### Install
+
 ```bash
 $ yarn add rrule-from-template
 # or
