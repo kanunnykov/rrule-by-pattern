@@ -11,13 +11,13 @@ const paths = {
 
 mainConfig = {
     entry: {
-        'rrule-from-template': path.join(paths.source, 'index.ts'),
-        'rrule-from-template.min': path.join(paths.source, 'index.ts'),
+        'rruleFromTemplate': path.join(paths.source, 'index.ts'),
+        'rruleFromTemplate.min': path.join(paths.source, 'index.ts'),
     },
     output: {
         filename: '[name].js',
         path: paths.es5,
-        library: 'rrule-from-template',
+        library: 'rruleFromTemplate',
         libraryTarget: 'umd',
         globalObject: "typeof self !== 'undefined' ? self : this",
     },
