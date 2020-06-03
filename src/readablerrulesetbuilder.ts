@@ -13,7 +13,7 @@ export class ReadableRRuleSetBuilder extends RRuleSetBuilder {
         const dates = rruleSet.all(this.iterator())
 
         for (const i in dates) {
-            if (this.template[Number(i) % this.template.length]) {
+            if (this.pattern[Number(i) % this.pattern.length]) {
                 continue
             }
             

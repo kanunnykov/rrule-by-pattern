@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>rrule from custom template</title>
+    <title>rrule by pattern</title>
     <script src="./demo/dist/es5/demo.js"></script>
 </head>
 <body>
     <div>
         <p>Let's imagine we have the following code:</p>
-        <form id="templateform" action="#" style="background-color: aliceblue; padding: 10px;">
+        <form id="patternform" action="#" style="background-color: aliceblue; padding: 10px;">
 <pre><code>import { RRule, RRuleSet } from 'rrule'
-import { ReadableRRuleSetBuilder } from 'rrule-from-template'
+import { ReadableRRuleSetBuilder } from 'rrule-by-pattern'
 
 const rruleSet = new RRuleSet()
 
@@ -21,11 +21,11 @@ rruleSet.rrule(new RRule({
     until: new Date(Date.UTC(2026, 0, 30, 6)),
 }))</code></pre>
 
-            <label for="template"><code>const template: Array&lt;0|1&gt; = </code></label>[<input type="text" name="template" id="template" value="1,1,1,1,0,0">]
+            <label for="pattern"><code>const pattern: Array&lt;0|1&gt; = </code></label>[<input type="text" name="pattern" id="pattern" value="1,1,1,1,0,0">]
 
 <pre><code>const builder = new ReadableRRuleSetBuilder(
     rruleSet,
-    template,
+    pattern,
     rruleSet.count()
 )
 

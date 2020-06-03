@@ -2,33 +2,33 @@ import { RRule, RRuleSet } from 'rrule'
 import { ReadableRRuleSetBuilder } from '../src/readablerrulesetbuilder'
 
 window.addEventListener('load', function() {
-    const templateForm = document.getElementById('templateform')
+    const patternForm = document.getElementById('patternform')
 
-    if (!templateForm) {
-        throw new Error('There is no \'templateform\' element in DOM')
+    if (!patternForm) {
+        throw new Error('There is no \'patternform\' element in DOM')
     }
 
-    templateForm.addEventListener('submit', function(event) {
+    patternForm.addEventListener('submit', function(event) {
         event.preventDefault()
 
         const regex = new RegExp('^[01](,\\s*[01])*$')
-        const template = document.getElementById('template') as HTMLInputElement
+        const pattern = document.getElementById('pattern') as HTMLInputElement
 
-        if (!regex.test(template.value)) {
-            const message = 'Incorrect template'
+        if (!regex.test(pattern.value)) {
+            const message = 'Incorrect pattern'
             alert(message)
             throw new Error(message)
         }
 
         build(
-            template.value.split(',').map(function(char) {
+            pattern.value.split(',').map(function(char) {
                 return Number(char) as 0 | 1
             })
         )
     })
 })
 
-function build(template: Array<0|1>) {
+function build(pattern: Array<0|1>) {
     const rruleSet = new RRuleSet()
 
     rruleSet.rrule(new RRule({
@@ -39,7 +39,7 @@ function build(template: Array<0|1>) {
     
     const builder = new ReadableRRuleSetBuilder(
         rruleSet,
-        template,
+        pattern,
         rruleSet.count()
     )
 

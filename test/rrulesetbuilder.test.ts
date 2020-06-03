@@ -6,7 +6,7 @@ import { ShortRRuleSetBuilder } from '../src/shortrrulesetbuilder'
 interface TestCase {
     title: string
     rruleSet: RRuleSet
-    template: Array<0|1>
+    pattern: Array<0|1>
     count: number
     result: Array<Date>
 }
@@ -25,7 +25,7 @@ testCases.push(function(): TestCase {
     return {
         title: 'Limited period | requested count >= period max count',
         rruleSet: rruleSet,
-        template: [1, 0, 1, 1, 0],
+        pattern: [1, 0, 1, 1, 0],
         count: 10,
         result: [
             new Date('2025-12-27T06:00:00.000Z'),
@@ -50,7 +50,7 @@ testCases.push(function(): TestCase {
     return {
         title: 'Limited period | requested count < period max count',
         rruleSet: rruleSet,
-        template: [1, 0, 1, 1, 0],
+        pattern: [1, 0, 1, 1, 0],
         count: 5,
         result: [
             new Date('2025-12-27T06:00:00.000Z'),
@@ -74,7 +74,7 @@ testCases.push(function(): TestCase {
     return {
         title: 'Unlimited period',
         rruleSet: rruleSet,
-        template: [1, 0, 1, 1, 0],
+        pattern: [1, 0, 1, 1, 0],
         count: 5,
         result: [
             new Date('2025-12-27T06:00:00.000Z'),
@@ -104,7 +104,7 @@ testCases.push(function(): TestCase {
     return {
         title: 'Combined intersecting periods | limited before unlimited',
         rruleSet: rruleSet,
-        template: [1, 0, 1, 1, 0],
+        pattern: [1, 0, 1, 1, 0],
         count: 5,
         result: [
             new Date('2025-12-27T06:00:00.000Z'),
@@ -134,7 +134,7 @@ testCases.push(function(): TestCase {
     return {
         title: 'Combined intersecting periods | limited after unlimited',
         rruleSet: rruleSet,
-        template: [1, 0, 1, 1, 0],
+        pattern: [1, 0, 1, 1, 0],
         count: 5,
         result: [
             new Date('2025-12-30T06:00:00.000Z'),
@@ -164,7 +164,7 @@ testCases.push(function(): TestCase {
     return {
         title: 'Combined with exclusion rule',
         rruleSet: rruleSet,
-        template: [1, 0, 1, 1, 0],
+        pattern: [1, 0, 1, 1, 0],
         count: 5,
         result: [
             new Date('2026-01-01T06:00:00.000Z'),
@@ -186,7 +186,7 @@ describe('ReadableRRuleSetBuilder', function() {
         it(testCase.title, function() {
             const builder = new ReadableRRuleSetBuilder(
                 testCase.rruleSet,
-                testCase.template,
+                testCase.pattern,
                 testCase.count
             )
             const rruleSet = builder.build()
@@ -208,7 +208,7 @@ describe('ShortRRuleSetBuilder', function() {
         it(testCase.title, function() {
             const builder = new ShortRRuleSetBuilder(
                 testCase.rruleSet,
-                testCase.template,
+                testCase.pattern,
                 testCase.count
             )
             const rruleSet = builder.build()

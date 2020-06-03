@@ -1,7 +1,7 @@
-rruleFromTemplate.js
+rruleByPattern.js
 ======================
 
-**Build recurrence rules from templates like '111100' (i.e. 4 on, 2 off)**
+**Build recurrence rules by patterns / templates like '111100' (i.e. 4 on, 2 off)**
 
 [![NPM version][npm-image]][npm-url]
 [![Build Status][ci-image]][ci-url]
@@ -13,29 +13,29 @@ It is a [rrule.js](https://github.com/jakubroztocil/rrule) extension.
 
 ### Quick Start
 
--   [Demo app](https://kanunnykov.github.io/rrule-from-template/)
+-   [Demo app](https://kanunnykov.github.io/rrule-by-pattern/)
 
 #### Install
 
 ```bash
-$ yarn add rrule-from-template
+$ yarn add rrule-by-pattern
 # or
-$ npm install rrule-from-template
+$ npm install rrule-by-pattern
 ```
 
 Alternatively, download manually:
-* [rruleFromTemplate.min.js](https://kanunnykov.github.io/rrule-from-template/dist/es5/rruleFromTemplate.min.js) (bundled without rrule.js, minified)
-* [rruleFromTemplate.js](https://kanunnykov.github.io/rrule-from-template/dist/es5/rruleFromTemplate.js) (bundled without rrule.js, not minified)
+* [rruleByPattern.min.js](https://kanunnykov.github.io/rrule-by-pattern/dist/es5/rruleByPattern.min.js) (bundled without rrule.js, minified)
+* [rruleByPattern.js](https://kanunnykov.github.io/rrule-by-pattern/dist/es5/rruleByPattern.js) (bundled without rrule.js, not minified)
 
 #### Usage
 
 There are 2 builders. One builds readable rrule sets, another - short.
 
-Both builders need 3 arguments: RRuleSet, template, count.
+Both builders need 3 arguments: RRuleSet, pattern, count.
 
 RRuleSet should be built and then passed to the builder. The builder will build a new RRuleSet based on the passed one.
 
-The template is just an array of 0 and 1:
+The pattern is just an array of 0 and 1:
 * 0 exclude date (e.g. shift off);
 * 1 include date (e.g. shift on).
 
@@ -44,7 +44,7 @@ The count is a number of dates you want to have in built RRuleSet. For sets that
 **ReadableRRuleSetBuilder:**
 ```es6
 import { RRule, RRuleSet } from 'rrule'
-import { ReadableRRuleSetBuilder } from 'rrule-from-template'
+import { ReadableRRuleSetBuilder } from 'rrule-by-pattern'
 
 const rruleSet = new RRuleSet()
 
@@ -68,11 +68,11 @@ RRULE:FREQ=HOURLY;UNTIL=20251230T180000Z;INTERVAL=12
 DTSTART:20260101T060000Z
 RRULE:FREQ=DAILY;UNTIL=20260130T060000Z
 
-const template: Array<0|1> = [1,1,1,1,0,0]
+const pattern: Array<0|1> = [1,1,1,1,0,0]
 
 const builder = new ReadableRRuleSetBuilder(
     rruleSet,
-    template,
+    pattern,
     rruleSet.count()
 )
 
@@ -90,7 +90,7 @@ EXDATE:20251227T060000Z,20251227T180000Z,20251230T060000Z,20251230T180000Z,20260
 **ShortRRuleSetBuilder:**
 ```es6
 import { RRule, RRuleSet } from 'rrule'
-import { ShortRRuleSetBuilder } from 'rrule-from-template'
+import { ShortRRuleSetBuilder } from 'rrule-by-pattern'
 
 const rruleSet = new RRuleSet()
 
@@ -114,11 +114,11 @@ RRULE:FREQ=HOURLY;UNTIL=20251230T180000Z;INTERVAL=12
 DTSTART:20260101T060000Z
 RRULE:FREQ=DAILY;UNTIL=20260130T060000Z
 
-const template: Array<0|1> = [1,1,1,1,0,0]
+const pattern: Array<0|1> = [1,1,1,1,0,0]
 
 const builder = new ShortRRuleSetBuilder(
     rruleSet,
-    template,
+    pattern,
     rruleSet.count()
 )
 
@@ -134,11 +134,11 @@ DTSTART:20260101T060000Z
 RRULE:FREQ=YEARLY;UNTIL=20261231T235959Z;BYDAY=MO,TU,WE,TH,FR,SA,SU;BYSETPOS=1,2,3,4,7,8,9,10,13,14,15,16,19,20,21,22,25,26,27,28
 ```
 
-[npm-url]: https://npmjs.org/package/rrule-from-template
-[npm-image]: http://img.shields.io/npm/v/rrule-from-template.svg
+[npm-url]: https://npmjs.org/package/rrule-by-pattern
+[npm-image]: http://img.shields.io/npm/v/rrule-by-pattern.svg
 
-[ci-url]: https://github.com/kanunnykov/rrule-from-template/actions
-[ci-image]: https://github.com/kanunnykov/rrule-from-template/workflows/Node.js%20CI/badge.svg
+[ci-url]: https://github.com/kanunnykov/rrule-by-pattern/actions
+[ci-image]: https://github.com/kanunnykov/rrule-by-pattern/workflows/Node.js%20CI/badge.svg
 
-[downloads-url]: https://npmjs.org/package/rrule-from-template
-[downloads-image]: http://img.shields.io/npm/dm/rrule-from-template.svg?style=flat-square
+[downloads-url]: https://npmjs.org/package/rrule-by-pattern
+[downloads-image]: http://img.shields.io/npm/dm/rrule-by-pattern.svg?style=flat-square

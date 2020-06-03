@@ -2,13 +2,13 @@ import { RRuleSet } from 'rrule'
 
 export abstract class RRuleSetBuilder {
     protected rruleSet: RRuleSet
-    protected template: Array<0|1>
+    protected pattern: Array<0|1>
     protected count: number
     private _limit: number | undefined
 
-    constructor(rruleSet: RRuleSet, template: Array<0|1>, count: number) {
+    constructor(rruleSet: RRuleSet, pattern: Array<0|1>, count: number) {
         this.rruleSet = rruleSet
-        this.template = template
+        this.pattern = pattern
         this.count = count
     }
 
@@ -19,12 +19,12 @@ export abstract class RRuleSetBuilder {
             return this._limit
         }
 
-        const template: Array<number> = this.template
-        const countOfOneInTemplate = template.reduce(
+        const pattern: Array<number> = this.pattern
+        const countOfOneInPattern = pattern.reduce(
             (prev, curr) => {return prev + curr}
         )
         const limit = Math.floor(
-            this.count * this.template.length / countOfOneInTemplate
+            this.count * this.pattern.length / countOfOneInPattern
         )
 
         this._limit = limit
