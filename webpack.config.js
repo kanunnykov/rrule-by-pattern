@@ -4,7 +4,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const paths = {
     source: path.resolve(__dirname, 'src'),
     demo: path.resolve(__dirname, 'demo'),
-    demoDist: path.resolve(__dirname, 'dist', 'es5', 'demo'),
+    demoEs5: path.resolve(__dirname, 'demo', 'dist', 'es5'),
     es5: path.resolve(__dirname, 'dist', 'es5'),
     esm: path.resolve(__dirname, 'dist', 'esm'),
 };
@@ -46,7 +46,6 @@ mainConfig = {
     },
     externals: {
         'rrule': 'rrule',
-        'date-fns': 'date-fns',
     },
 };
 
@@ -56,7 +55,7 @@ demoConfig = {
     },
     output: {
         filename: '[name].js',
-        path: paths.demoDist,
+        path: paths.demoEs5,
     },
     devtool: 'source-map',
     mode: 'production',
