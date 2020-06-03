@@ -1,4 +1,4 @@
-rrule-from-template.js
+rruleFromTemplate.js
 ======================
 
 **Build recurrence rules from templates like '111100' (i.e. 4 on, 2 off)**
@@ -22,6 +22,10 @@ $ yarn add rrule-from-template
 # or
 $ npm install rrule-from-template
 ```
+
+Alternatively, download manually:
+* [rruleFromTemplate.min.js](https://kanunnykov.github.io/rrule-from-template/dist/es5/rruleFromTemplate.min.js) (bundled without rrule.js, minified)
+* [rruleFromTemplate.js](https://kanunnykov.github.io/rrule-from-template/dist/es5/rruleFromTemplate.js) (bundled without rrule.js, not minified)
 
 #### Usage
 
@@ -83,7 +87,7 @@ RRULE:FREQ=DAILY;UNTIL=20260130T060000Z
 EXDATE:20251227T060000Z,20251227T180000Z,20251230T060000Z,20251230T180000Z,20260105T060000Z,20260106T060000Z,20260111T060000Z,20260112T060000Z,20260117T060000Z,20260118T060000Z,20260123T060000Z,20260124T060000Z,20260129T060000Z,20260130T060000Z
 ```
 
-**ReadableRRuleSetBuilder:**
+**ShortRRuleSetBuilder:**
 ```es6
 import { RRule, RRuleSet } from 'rrule'
 import { ShortRRuleSetBuilder } from 'rrule-from-template'
