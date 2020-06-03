@@ -1,7 +1,7 @@
 {
   "name": "rrule-from-template",
   "description": "Build rrules from templates like '111100' (i.e. 4 on, 2 off). rrule.js extension.",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "./dist/es5/rruleFromTemplate.js",
   "module": "./dist/esm/src/index.js",
   "typings": "./dist/esm/src/index.d.ts",
