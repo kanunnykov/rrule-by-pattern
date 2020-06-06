@@ -27,14 +27,13 @@ Alternatively, download manually:
 * [rruleByPattern.min.js](https://kanunnykov.github.io/rrule-by-pattern/dist/es5/rruleByPattern.min.js) (bundled without rrule.js, minified)
 * [rruleByPattern.js](https://kanunnykov.github.io/rrule-by-pattern/dist/es5/rruleByPattern.js) (bundled without rrule.js, not minified)
 
-As rrule.js is not bundled with rruleByPattern.js, it's needed to download it as well and include them both:
+As rrule.js is not bundled with rruleByPattern.js, it's needed to install or download it as well.
 
 ```html
-<script src="./rrule/dist/es5/rrule.min.js"></script>
 <script src="./rrule-by-pattern/dist/es5/rruleByPattern.min.js"></script>
 ```
 
-Then you will be able to use global variables named `rrule` (e.g. `new rrule.RRule()`) and `rruleBypattern` (e.g. `new rruleByPattern.ShoftRRuleSetBuilder()`).
+Then you will be able to use global variable `rruleBypattern` (e.g. `new rruleByPattern.ShortRRuleSetBuilder()`).
 
 #### Usage
 
