@@ -17,9 +17,13 @@
     "recurrences",
     "calendar",
     "icalendar",
+    "pattern",
+    "plan",
     "rfc",
+    "rrule",
     "shifts",
-    "schedule"
+    "schedule",
+    "template"
   ],
   "repository": {
     "type": "git",

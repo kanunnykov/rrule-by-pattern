@@ -7,7 +7,7 @@ rruleByPattern.js
 [![Build Status][ci-image]][ci-url]
 [![Downloads][downloads-image]][downloads-url]
 
-It is a [rrule.js](https://github.com/jakubroztocil/rrule) extension.
+It is a [rrule.js](https://github.com/jakubroztocil/rrule) extension that gives more flexibility in creation of recurring events. The pattern / template can be absolutely custom and as long as you need. This library is well suited for shift plan (rota, roster) set ups.
 
 * * *
 
@@ -27,19 +27,28 @@ Alternatively, download manually:
 * [rruleByPattern.min.js](https://kanunnykov.github.io/rrule-by-pattern/dist/es5/rruleByPattern.min.js) (bundled without rrule.js, minified)
 * [rruleByPattern.js](https://kanunnykov.github.io/rrule-by-pattern/dist/es5/rruleByPattern.js) (bundled without rrule.js, not minified)
 
+As rrule.js is not bundled with rruleByPattern.js, it's needed to include them both:
+
+```html
+<script src="./rrule/dist/es5/rrule.min.js"></script>
+<script src="./rrule-by-pattern/dist/es5/rruleByPattern.min.js"></script>
+```
+
+Then in code you will be able to use global variables named `rrule` (e.g. `new rrule.RRule()`) and `rruleBypattern` (e.g. `new rruleByPattern.ShoftRRuleSetBuilder()`).
+
 #### Usage
 
 There are 2 builders. One builds readable rrule sets, another - short.
 
-Both builders need 3 arguments: RRuleSet, pattern, count.
+Both builders need 3 arguments: `rruleSet`, `pattern`, `count`.
 
-RRuleSet should be built and then passed to the builder. The builder will build a new RRuleSet based on the passed one.
+The `rruleSet` is a rrule.js RRuleSet obviously an it should be built and then passed to the builder. The builder will build a new RRuleSet based on the passed one.
 
-The pattern is just an array of 0 and 1:
+The `pattern` is just an array of 0 and 1:
 * 0 exclude date (e.g. shift off);
 * 1 include date (e.g. shift on).
 
-The count is a number of dates you want to have in built RRuleSet. For sets that have 'until' or 'count', it can be just rruleSet.count(). For unlimited sets you should pick a count by yourself. 
+The `count` is a number of dates you want to have in a built RRuleSet. For sets that have 'until' or 'count', it can be just `rruleSet.count()`. For unlimited sets you should pick a count by yourself. 
 
 **ReadableRRuleSetBuilder:**
 ```es6
@@ -132,6 +141,28 @@ DTSTART:20250101T180000Z
 RRULE:FREQ=YEARLY;UNTIL=20251231T235959Z;BYDAY=MO,TU,WE,TH,FR,SA,SU;BYSETPOS=359,360,362,363
 DTSTART:20260101T060000Z
 RRULE:FREQ=YEARLY;UNTIL=20261231T235959Z;BYDAY=MO,TU,WE,TH,FR,SA,SU;BYSETPOS=1,2,3,4,7,8,9,10,13,14,15,16,19,20,21,22,25,26,27,28
+```
+
+### Development
+
+rruleByPattern.js is implemented in Typescript.
+
+To run the code, checkout this repository and run:
+
+```bash
+$ yarn
+```
+
+To run the tests, run:
+
+```bash
+$ yarn test
+```
+
+To build files for distribution, run:
+
+```bash
+$ yarn build
 ```
 
 [npm-url]: https://npmjs.org/package/rrule-by-pattern
