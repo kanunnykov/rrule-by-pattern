@@ -7,7 +7,7 @@ rruleByPattern.js
 [![Build Status][ci-image]][ci-url]
 [![Downloads][downloads-image]][downloads-url]
 
-It is a [rrule.js](https://github.com/jakubroztocil/rrule) extension that gives more flexibility in creation of recurring events. The pattern / template can be absolutely custom and as long as you need. This library is well suited for shift plan (rota, roster) set ups.
+It is a [rrule.js](https://github.com/jakubroztocil/rrule) extension that gives more flexibility in creation of recurring events. The pattern / template can be absolutely custom and as long as you need. This extension is well suited for shift plan (rota, roster) set ups.
 
 * * *
 
@@ -33,7 +33,7 @@ As rrule.js is not bundled with rruleByPattern.js, it's needed to install or dow
 <script src="./rrule-by-pattern/dist/es5/rruleByPattern.min.js"></script>
 ```
 
-Then you will be able to use global variable `rruleBypattern` (e.g. `new rruleByPattern.ShortRRuleSetBuilder()`).
+Then you will be able to use global variable `rruleByPattern` (e.g. `new rruleByPattern.ShortRRuleSetBuilder()`).
 
 #### Usage
 
@@ -144,7 +144,7 @@ RRULE:FREQ=YEARLY;UNTIL=20261231T235959Z;BYDAY=MO,TU,WE,TH,FR,SA,SU;BYSETPOS=1,2
 
 ### Development
 
-rruleByPattern.js is implemented in Typescript.
+rruleByPattern.js is implemented in TypeScript.
 
 To run the code, checkout this repository and run:
 
