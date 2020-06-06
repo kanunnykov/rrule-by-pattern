@@ -27,14 +27,14 @@ Alternatively, download manually:
 * [rruleByPattern.min.js](https://kanunnykov.github.io/rrule-by-pattern/dist/es5/rruleByPattern.min.js) (bundled without rrule.js, minified)
 * [rruleByPattern.js](https://kanunnykov.github.io/rrule-by-pattern/dist/es5/rruleByPattern.js) (bundled without rrule.js, not minified)
 
-As rrule.js is not bundled with rruleByPattern.js, it's needed to include them both:
+As rrule.js is not bundled with rruleByPattern.js, it's needed to download it as well and include them both:
 
 ```html
 <script src="./rrule/dist/es5/rrule.min.js"></script>
 <script src="./rrule-by-pattern/dist/es5/rruleByPattern.min.js"></script>
 ```
 
-Then in code you will be able to use global variables named `rrule` (e.g. `new rrule.RRule()`) and `rruleBypattern` (e.g. `new rruleByPattern.ShoftRRuleSetBuilder()`).
+Then you will be able to use global variables named `rrule` (e.g. `new rrule.RRule()`) and `rruleBypattern` (e.g. `new rruleByPattern.ShoftRRuleSetBuilder()`).
 
 #### Usage
 
@@ -42,7 +42,7 @@ There are 2 builders. One builds readable rrule sets, another - short.
 
 Both builders need 3 arguments: `rruleSet`, `pattern`, `count`.
 
-The `rruleSet` is a rrule.js RRuleSet obviously an it should be built and then passed to the builder. The builder will build a new RRuleSet based on the passed one.
+The `rruleSet` is a rrule.js RRuleSet obviously and it should be built and then passed to the builder. The builder will build a new RRuleSet based on the passed one.
 
 The `pattern` is just an array of 0 and 1:
 * 0 exclude date (e.g. shift off);
