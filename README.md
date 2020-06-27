@@ -6,6 +6,7 @@ rruleByPattern.js
 [![NPM version][npm-image]][npm-url]
 [![Build Status][ci-image]][ci-url]
 [![Downloads][downloads-image]][downloads-url]
+[![codecov.io](http://codecov.io/github/kanunnykov/rrule-by-pattern/coverage.svg?branch=master)](http://codecov.io/github/kanunnykov/rrule-by-pattern?branch=master)
 
 It is a [rrule.js](https://github.com/jakubroztocil/rrule) extension that gives more flexibility in creation of recurring events. The pattern / template can be absolutely custom and as long as you need. This extension is well suited for shift plan (rota, roster) set ups.
 
@@ -156,6 +157,12 @@ To run the tests, run:
 
 ```bash
 $ yarn test
+```
+
+To build the test coverage, run:
+
+```bash
+$ yarn coverage
 ```
 
 To build files for distribution, run:
