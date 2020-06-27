@@ -27,5 +27,5 @@ jobs:
     - run: npm ci
     - run: npm run build
     - run: npm test
-    - run: npm coverage
+    - run: npm run coverage
     - run: nyc report --reporter=json && codecov -t ${{ secrets.CODECOV_TOKEN }} -f coverage/*.json
