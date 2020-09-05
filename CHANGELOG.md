@@ -2,7 +2,6 @@
 - 1.2.1 (2020-09-05)
   - Misc:
     - Update vulnerable dependencies
-    - Publish to npm.pkg.github.com
 - 1.2.0 (2020-06-27)
   - Features:
     - Add codecov
